@@ -201,7 +201,7 @@ h1 { margin: 0; font-size: clamp(28px, 4vw, 42px); line-height: 1.1; }
   border-radius: 14px;
 }
 
-table { width: 100%; border-collapse: collapse; min-width: 760px; background: #fff; }
+table { width: 100%; border-collapse: collapse; min-width: 940px; background: #fff; }
 th, td { padding: 13px 14px; text-align: left; border-bottom: 1px solid #edf1f5; }
 th { background: #f8fafc; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
 td { font-size: 14px; }
@@ -316,4 +316,60 @@ td.code-cell { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monos
   .drive-actions { align-items: stretch; flex-direction: column; }
   .drive-actions .records-actions { width: 100%; }
   .drive-actions .records-actions .btn { flex: 1 1 180px; }
+}
+
+/* Respaldo TXT local */
+.local-folder-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+
+.local-folder-box > div:first-child {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.local-folder-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#localFolderName {
+  overflow-wrap: anywhere;
+}
+
+.local-options {
+  align-items: flex-end;
+}
+
+.local-switches {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 981px) {
+  .metrics { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .local-folder-box {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .local-folder-box .records-actions {
+    width: 100%;
+  }
+
+  .local-folder-box .records-actions .btn {
+    flex: 1 1 180px;
+  }
 }

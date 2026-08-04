@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#334155">
   <title>Registro de Lecturas COM</title>
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
   <header class="app-header">
@@ -13,7 +13,7 @@
       <div>
         <p class="eyebrow">CONTROL DE DESPACHO</p>
         <h1>Registro de Lecturas COM</h1>
-        <p class="subtitle">Conecta todos los lectores que necesites y registra código, fecha, hora y dispositivo.</p>
+        <p class="subtitle">Conecta todos los lectores que necesites y respalda cada lectura en Google Drive y en una carpeta local.</p>
       </div>
       <div class="header-actions">
         <button id="addReaderBtn" class="btn btn-primary" type="button">+ Agregar pistola</button>
@@ -42,7 +42,7 @@
         <strong id="lastMetric" class="metric-value metric-small">Sin lecturas</strong>
       </article>
       <article class="metric-card">
-        <span class="metric-label">TXT pendientes</span>
+        <span class="metric-label">Respaldos pendientes</span>
         <strong id="pendingMetric" class="metric-value">0</strong>
       </article>
     </section>
@@ -93,6 +93,47 @@
       <p id="driveStatusText" class="drive-status-text">Las lecturas seguirán guardándose localmente aunque Drive no esté configurado.</p>
     </section>
 
+
+    <section class="panel">
+      <div class="panel-heading records-heading">
+        <div>
+          <h2>Respaldo TXT en carpeta local</h2>
+          <p>Cada lectura crea un TXT independiente en la carpeta que autorices.</p>
+        </div>
+        <span id="localStatusBadge" class="badge">No configurado</span>
+      </div>
+
+      <div class="local-folder-box">
+        <div>
+          <span class="local-folder-label">Carpeta seleccionada</span>
+          <strong id="localFolderName">Ninguna carpeta seleccionada</strong>
+        </div>
+        <div class="records-actions">
+          <button id="selectLocalFolderBtn" class="btn btn-primary" type="button">Seleccionar carpeta local</button>
+          <button id="forgetLocalFolderBtn" class="btn btn-ghost" type="button" disabled>Desvincular</button>
+        </div>
+      </div>
+
+      <div class="drive-actions local-options">
+        <div class="local-switches">
+          <label class="switch-row">
+            <input id="localEnabledInput" type="checkbox">
+            <span>Activar creación automática de TXT local</span>
+          </label>
+          <label class="switch-row">
+            <input id="localDailyFoldersInput" type="checkbox" checked>
+            <span>Crear una subcarpeta por fecha</span>
+          </label>
+        </div>
+        <div class="records-actions">
+          <button id="saveLocalConfigBtn" class="btn btn-primary" type="button">Guardar configuración local</button>
+          <button id="retryLocalPendingBtn" class="btn btn-secondary" type="button">Reintentar pendientes</button>
+        </div>
+      </div>
+
+      <p id="localStatusText" class="drive-status-text">Selecciona una carpeta para activar el segundo respaldo.</p>
+    </section>
+
     <section class="panel">
       <div class="panel-heading records-heading">
         <div>
@@ -127,6 +168,7 @@
               <th>Pistola</th>
               <th>Identificador</th>
               <th>TXT Drive</th>
+              <th>TXT local</th>
               <th aria-label="Acciones"></th>
             </tr>
           </thead>
@@ -147,9 +189,10 @@
         <li>Asigna un nombre y selecciona la velocidad, normalmente 9600.</li>
         <li>Presiona <strong>Seleccionar puerto COM</strong> y elige el lector.</li>
         <li>Configura Google Drive una sola vez con la URL de Apps Script y la clave privada.</li>
-        <li>Escanea. Cada lectura se guarda localmente y crea un TXT independiente en Drive.</li>
+        <li>En <strong>Respaldo TXT en carpeta local</strong>, selecciona y autoriza la carpeta.</li>
+        <li>Escanea. Cada lectura crea un TXT independiente en Drive y otro en la carpeta local.</li>
       </ol>
-      <p class="note">La página debe abrirse desde GitHub Pages mediante HTTPS en Microsoft Edge o Google Chrome. El navegador solicitará autorización por cada puerto.</p>
+      <p class="note">La página debe abrirse desde GitHub Pages mediante HTTPS en Microsoft Edge o Google Chrome. El navegador solicitará autorización para cada puerto COM y para la carpeta local.</p>
     </section>
   </main>
 
@@ -197,6 +240,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
